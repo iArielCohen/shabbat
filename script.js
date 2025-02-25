@@ -126,7 +126,7 @@ function calculatePayment() {
 
   let resultsHtml = `
     <p>העלות הכוללת: ${totalAmount} ש"ח</p>
-    <p>כל אחד צריך לשלם: ${eachPersonShouldPay.toFixed(2)} ש"ח</p>
+    <p>תשלום לשבת מלאה: ${eachPersonShouldPay.toFixed(2)} ש"ח</p>
   `;
 
   fullParticipants.forEach(participant => {
