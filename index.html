@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>חישוב תשלומים לשישי-שבת</title>
+  <link href="https://fonts.googleapis.com/css2?family=Almoni&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>חישוב תשלומים לשישי-שבת</h1>
+
+  <div class="input-section">
+    <h2>הזן את המשתתפים שמגיעים לשבת מלאה</h2>
+    <form id="fullParticipantsForm">
+      <input type="text" id="fullParticipantName" placeholder="שם המשתתף" required>
+      <input type="number" id="fullParticipantAmount" placeholder="סכום ששולם" required>
+      <button type="submit">הוסף לשישי-שבת</button>
+    </form>
+    <div id="fullParticipantsList"></div> <!-- רשימה של המשתתפים -->
+  </div>
+
+  <div class="input-section">
+    <h2>הזן את המשתתפים שמגיעים רק לשישי</h2>
+    <form id="fridayParticipantsForm">
+      <input type="text" id="fridayParticipantName" placeholder="שם המשתתף" required>
+      <input type="number" id="fridayParticipantAmount" placeholder="סכום ששולם" required>
+      <button type="submit">הוסף לשישי</button>
+    </form>
+    <div id="fridayParticipantsList"></div> <!-- רשימה של המשתתפים -->
+  </div>
+
+  <div class="input-section">
+    <h2>הזן את המשתתפים שמגיעים רק לשבת</h2>
+    <form id="saturdayParticipantsForm">
+      <input type="text" id="saturdayParticipantName" placeholder="שם המשתתף" required>
+      <input type="number" id="saturdayParticipantAmount" placeholder="סכום ששולם" required>
+      <button type="submit">הוסף לשבת</button>
+    </form>
+    <div id="saturdayParticipantsList"></div> <!-- רשימה של המשתתפים -->
+  </div>
+
+  <button onclick="calculatePayment()">חשב תשלומים</button>
+
+  <div id="results"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

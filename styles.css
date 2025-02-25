@@ -1,0 +1,145 @@
+body {
+    font-family: 'Almoni', sans-serif;
+    text-align: right;
+    direction: rtl;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin: 20px;
+    font-size: 24px;
+  }
+  
+  .input-section {
+    margin: 10px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    text-align: right;
+    color: #34495e;
+    font-size: 18px;
+  }
+  
+  input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  #results {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #results p {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+  #fullParticipantsList, #fridayParticipantsList, #saturdayParticipantsList {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  #fullParticipantsList p, #fridayParticipantsList p, #saturdayParticipantsList p {
+    margin: 5px 0;
+  }
+  
+  button.delete, button.edit {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #e74c3c;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button.edit {
+    background-color: #f39c12;
+  }
+  
+  button.delete:hover, button.edit:hover {
+    opacity: 0.8;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 22px;
+    }
+  
+    .input-section {
+      padding: 15px;
+    }
+  
+    input {
+      font-size: 14px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  
+    #results p {
+      font-size: 16px;
+    }
+  }
+  /* הגדרת רוחב שדות הזנה */
+input[type="text"], input[type="number"] {
+  width: 100%; /* תן להם תפס רוחב מלא בתוך אלמנט הטופס */
+  box-sizing: border-box; /* וודא שהשדות לא יוצאים החוצה כשהם מקבלים padding */
+  padding: 10px; /* הוספת ריווח לשדה */
+  margin-bottom: 10px; /* ריווח בין שדות */
+  border: 1px solid #ccc; /* גבול רך לשדות */
+  border-radius: 5px; /* פינות מעוגלות */
+}
+
+/* הגדרת רוחב כפתור ההגשה */
+button {
+  width: 100%; /* תן לו תפס רוחב מלא */
+  padding: 12px; /* הוסף ריווח פנימי */
+  margin-top: 10px; /* ריווח בין הכפתור לשדה האחרון */
+  border: none;
+  background-color: #4CAF50; /* צבע רקע ירוק */
+  color: white; /* צבע טקסט לבן */
+  font-size: 16px;
+  border-radius: 5px; /* פינות מעוגלות */
+}
+
+button:hover {
+  background-color: #45a049; /* צבע רקע כהה יותר בלחיצה */
+}
+
+  
