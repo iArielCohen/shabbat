@@ -1,50 +1,72 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>חישוב תשלומים לשישי-שבת</title>
-  <link href="https://fonts.googleapis.com/css2?family=Almoni&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חישוב קניות לתחנה - Split</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>חישוב תשלומים לשישי-שבת</h1>
+    <main class="container">
+        <header>
+            <h1>🚒 ספליט תחנה - קניות לשבת</h1>
+            <p class="subtitle">חישוב הוצאות חכם והוגן למשמרות מעורבות</p>
+        </header>
 
-  <div class="input-section">
-    <h2>הזן את המשתתפים שמגיעים לשבת מלאה</h2>
-    <form id="fullParticipantsForm">
-      <input type="text" id="fullParticipantName" placeholder="שם המשתתף" required>
-      <input type="number" id="fullParticipantAmount" placeholder="סכום ששולם" required>
-      <button type="submit">הוסף לשישי-שבת</button>
-    </form>
-    <div id="fullParticipantsList"></div> <!-- רשימה של המשתתפים -->
-  </div>
+        <section class="grid">
+            <article class="card">
+                <div class="card-header">
+                    <h3>שבת מלאה (שישי + שבת)</h3>
+                    <span class="badge">משקל: 2</span>
+                </div>
+                <p class="description">משלמים סכום מלא על כל הסופ"ש.</p>
+                <div class="input-group">
+                    <input type="text" id="name-full" placeholder="שם הכבאי">
+                    <input type="number" id="paid-full" placeholder="סכום ששולם בפועל (₪)" min="0">
+                    <button class="add-btn" onclick="addPerson('full', 2)">+ הוסף למשמרת</button>
+                </div>
+                <div id="list-full" class="participants-list"></div>
+            </article>
 
-  <div class="input-section">
-    <h2>הזן את המשתתפים שמגיעים רק לשישי</h2>
-    <form id="fridayParticipantsForm">
-      <input type="text" id="fridayParticipantName" placeholder="שם המשתתף" required>
-      <input type="number" id="fridayParticipantAmount" placeholder="סכום ששולם" required>
-      <button type="submit">הוסף לשישי</button>
-    </form>
-    <div id="fridayParticipantsList"></div> <!-- רשימה של המשתתפים -->
-  </div>
+            <article class="card">
+                <div class="card-header">
+                    <h3>שישי בלבד</h3>
+                    <span class="badge">משקל: 1</span>
+                </div>
+                <p class="description">משלמים חצי מהסכום המלא.</p>
+                <div class="input-group">
+                    <input type="text" id="name-fri" placeholder="שם הכבאי">
+                    <input type="number" id="paid-fri" placeholder="סכום ששולם בפועל (₪)" min="0">
+                    <button class="add-btn" onclick="addPerson('fri', 1)">+ הוסף למשמרת</button>
+                </div>
+                <div id="list-fri" class="participants-list"></div>
+            </article>
 
-  <div class="input-section">
-    <h2>הזן את המשתתפים שמגיעים רק לשבת</h2>
-    <form id="saturdayParticipantsForm">
-      <input type="text" id="saturdayParticipantName" placeholder="שם המשתתף" required>
-      <input type="number" id="saturdayParticipantAmount" placeholder="סכום ששולם" required>
-      <button type="submit">הוסף לשבת</button>
-    </form>
-    <div id="saturdayParticipantsList"></div> <!-- רשימה של המשתתפים -->
-  </div>
+            <article class="card">
+                <div class="card-header">
+                    <h3>שבת בלבד</h3>
+                    <span class="badge">משקל: 1</span>
+                </div>
+                <p class="description">משלמים חצי מהסכום המלא.</p>
+                <div class="input-group">
+                    <input type="text" id="name-sat" placeholder="שם הכבאי">
+                    <input type="number" id="paid-sat" placeholder="סכום ששולם בפועל (₪)" min="0">
+                    <button class="add-btn" onclick="addPerson('sat', 1)">+ הוסף למשמרת</button>
+                </div>
+                <div id="list-sat" class="participants-list"></div>
+            </article>
+        </section>
 
-  <button onclick="calculatePayment()">חשב תשלומים</button>
+        <button class="calculate-btn" onclick="calculateSplit()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            חשב תוצאות עכשיו
+        </button>
 
-  <div id="results"></div>
+        <section id="results" class="results-container">
+            </section>
+    </main>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
