@@ -38,26 +38,17 @@ function removePerson(id) {
     renderLists();
 }
 
-/**
- * פונקציה חדשה לעריכת משתתף
- */
 function editPerson(id) {
-    // מציאת המשתתף במערך לפי ה-ID שלו
     const person = participants.find(p => p.id === id);
     if (!person) return;
 
-    // החזרת הנתונים לשדות הקלט הרלוונטיים כדי שהמשתמש יוכל לערוך
     const nameInput = document.getElementById(`name-${person.category}`);
     const paidInput = document.getElementById(`paid-${person.category}`);
     
     nameInput.value = person.name;
-    // אם הוא שילם 0, נשאיר ריק שיהיה נקי לעין, אחרת נציג את המספר
     paidInput.value = person.paid > 0 ? person.paid : '';
 
-    // הסרת המשתתף מהרשימה כדי שלא תיווצר כפילות כשישמור מחדש
     removePerson(id);
-
-    // התמקדות אוטומטית על השדה לנוחות
     nameInput.focus();
 }
 
@@ -154,11 +145,12 @@ function calculateSplit() {
         
         let amountToTransfer = Math.min(currentDebtor.amount, currentCreditor.amount);
 
-        // הוסף תוקן לחץ מובנה שמאלה (←) במקום שימוש ב-CSS
+        // כאן תיקנתי את בעיית הטקסט ההפוך על ידי הפרדה ברורה בין המילה לבין החץ
         resultsHTML += `
             <li class="transaction-item">
                 <strong>${currentDebtor.name}</strong> 
-                <span class="transfer-icon">מעביר/ה &larr;</span> 
+                <span style="margin: 0 10px;">מעביר/ה</span>
+                <span class="transfer-icon">&larr;</span> 
                 <strong>${currentCreditor.name}</strong> 
                 <span style="margin-right: auto; font-weight: bold; color: var(--primary-color);">₪${amountToTransfer.toFixed(2)}</span>
             </li>`;
