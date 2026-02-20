@@ -1,5 +1,12 @@
 let participants = [];
 
+// מילון תרגום קטגוריות לעברית לתצוגה ברשימה המאוחדת
+const shiftNames = {
+    'full': 'שבת מלאה',
+    'fri': 'שישי בלבד',
+    'sat': 'שבת בלבד'
+};
+
 function addPerson(category, weight) {
     const nameInput = document.getElementById(`name-${category}`);
     const paidInput = document.getElementById(`paid-${category}`);
@@ -52,14 +59,32 @@ function editPerson(id) {
     nameInput.focus();
 }
 
+// מעודכן: מרנדר רשימה אחת מרכזית במקום 3 נפרדות
 function renderLists() {
-    const htmlOutputs = { full: '', fri: '', sat: '' };
+    const mainContainer = document.getElementById('unified-list-container');
+    const listContainer = document.getElementById('all-participants-list');
+    
+    // אם אין משתתפים, נסתיר את אזור הרשימה לגמרי
+    if (participants.length === 0) {
+        mainContainer.style.display = 'none';
+        listContainer.innerHTML = '';
+        return;
+    }
+
+    // הצגת הקונטיינר אם יש לפחות משתתף אחד
+    mainContainer.style.display = 'block';
+    
+    let listHTML = '';
     
     participants.forEach(p => {
-        htmlOutputs[p.category] += `
+        const shiftLabel = shiftNames[p.category];
+        
+        listHTML += `
             <div class="person-item">
                 <div class="person-info">
-                    ${p.name} <span class="person-paid">(שילם: ₪${p.paid.toFixed(2)})</span>
+                    <strong>${p.name}</strong>
+                    <span class="badge-shift">${shiftLabel}</span>
+                    <span class="person-paid">(שילם: ₪${p.paid.toFixed(2)})</span>
                 </div>
                 <div class="person-actions">
                     <button class="action-btn edit-btn" title="ערוך משתתף" onclick="editPerson(${p.id})">
@@ -72,9 +97,7 @@ function renderLists() {
             </div>`;
     });
 
-    document.getElementById('list-full').innerHTML = htmlOutputs.full;
-    document.getElementById('list-fri').innerHTML = htmlOutputs.fri;
-    document.getElementById('list-sat').innerHTML = htmlOutputs.sat;
+    listContainer.innerHTML = listHTML;
 }
 
 function calculateSplit() {
@@ -145,7 +168,6 @@ function calculateSplit() {
         
         let amountToTransfer = Math.min(currentDebtor.amount, currentCreditor.amount);
 
-        // כאן תיקנתי את בעיית הטקסט ההפוך על ידי הפרדה ברורה בין המילה לבין החץ
         resultsHTML += `
             <li class="transaction-item">
                 <strong>${currentDebtor.name}</strong> 
