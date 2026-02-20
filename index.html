@@ -11,6 +11,7 @@
     <main class="container">
         <header>
             <h1>🚒 ספליט תחנה - קניות לשבת</h1>
+            <p class="subtitle">חישוב הוצאות חכם והוגן למשמרות מעורבות</p>
         </header>
 
         <section class="grid">
@@ -25,7 +26,6 @@
                     <input type="number" id="paid-full" placeholder="סכום ששולם בפועל (₪)" min="0">
                     <button class="add-btn" onclick="addPerson('full', 2)">+ הוסף למשמרת</button>
                 </div>
-                <div id="list-full" class="participants-list"></div>
             </article>
 
             <article class="card">
@@ -39,7 +39,6 @@
                     <input type="number" id="paid-fri" placeholder="סכום ששולם בפועל (₪)" min="0">
                     <button class="add-btn" onclick="addPerson('fri', 1)">+ הוסף למשמרת</button>
                 </div>
-                <div id="list-fri" class="participants-list"></div>
             </article>
 
             <article class="card">
@@ -53,8 +52,12 @@
                     <input type="number" id="paid-sat" placeholder="סכום ששולם בפועל (₪)" min="0">
                     <button class="add-btn" onclick="addPerson('sat', 1)">+ הוסף למשמרת</button>
                 </div>
-                <div id="list-sat" class="participants-list"></div>
             </article>
+        </section>
+
+        <section id="unified-list-container" class="unified-list-container" style="display: none;">
+            <h3>משתתפים שהוזנו:</h3>
+            <div id="all-participants-list" class="participants-list"></div>
         </section>
 
         <button class="calculate-btn" onclick="calculateSplit()">
@@ -69,5 +72,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
