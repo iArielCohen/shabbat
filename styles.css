@@ -1,145 +1,292 @@
+/* משתני צבע ועיצוב גלובליים */
+:root {
+  --primary-color: #e53935;
+  --primary-hover: #c62828;
+  --success-color: #2e7d32;
+  --success-hover: #1b5e20;
+  --background: #f4f6f8;
+  --card-bg: #ffffff;
+  --text-main: #2c3e50;
+  --text-muted: #7f8c8d;
+  --border-color: #e0e6ed;
+  --radius-lg: 16px;
+  --radius-md: 8px;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: 'Almoni', sans-serif;
-    text-align: right;
-    direction: rtl;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #2c3e50;
-    margin: 20px;
-    font-size: 24px;
-  }
-  
-  .input-section {
-    margin: 10px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    text-align: right;
-    color: #34495e;
-    font-size: 18px;
-  }
-  
-  input {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    padding: 12px 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-  }
-  
-  button:hover {
-    background-color: #2980b9;
-  }
-  
-  #results {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  #results p {
-    margin: 10px 0;
-    font-size: 18px;
-  }
-  
-  #fullParticipantsList, #fridayParticipantsList, #saturdayParticipantsList {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #e1e1e1;
-    border-radius: 4px;
-  }
-  
-  #fullParticipantsList p, #fridayParticipantsList p, #saturdayParticipantsList p {
-    margin: 5px 0;
-  }
-  
-  button.delete, button.edit {
-    margin-left: 10px;
-    padding: 5px 10px;
-    font-size: 12px;
-    background-color: #e74c3c;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  button.edit {
-    background-color: #f39c12;
-  }
-  
-  button.delete:hover, button.edit:hover {
-    opacity: 0.8;
-  }
-  
-  @media only screen and (max-width: 600px) {
-    h1 {
-      font-size: 22px;
-    }
-  
-    .input-section {
-      padding: 15px;
-    }
-  
-    input {
-      font-size: 14px;
-    }
-  
-    button {
-      font-size: 14px;
-    }
-  
-    #results p {
-      font-size: 16px;
-    }
-  }
-  /* הגדרת רוחב שדות הזנה */
-input[type="text"], input[type="number"] {
-  width: 100%; /* תן להם תפס רוחב מלא בתוך אלמנט הטופס */
-  box-sizing: border-box; /* וודא שהשדות לא יוצאים החוצה כשהם מקבלים padding */
-  padding: 10px; /* הוספת ריווח לשדה */
-  margin-bottom: 10px; /* ריווח בין שדות */
-  border: 1px solid #ccc; /* גבול רך לשדות */
-  border-radius: 5px; /* פינות מעוגלות */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--background);
+  color: var(--text-main);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+  direction: rtl;
+  text-align: right;
 }
 
-/* הגדרת רוחב כפתור ההגשה */
-button {
-  width: 100%; /* תן לו תפס רוחב מלא */
-  padding: 12px; /* הוסף ריווח פנימי */
-  margin-top: 10px; /* ריווח בין הכפתור לשדה האחרון */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: 0 15px 35px rgba(229, 57, 53, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(229, 57, 53, 0.1);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-header h3 {
+  color: var(--text-main);
+  font-size: 1.25rem;
+}
+
+.badge {
+  background: rgba(229, 57, 53, 0.1);
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: #fafbfc;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(229, 57, 53, 0.1);
+}
+
+.add-btn {
+  background: #fff;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.add-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.participants-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.person-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border-right: 4px solid var(--primary-color); 
+}
+
+.person-info {
+  font-weight: 500;
+}
+
+.person-paid {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.person-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  background: none;
   border: none;
-  background-color: #4CAF50; /* צבע רקע ירוק */
-  color: white; /* צבע טקסט לבן */
-  font-size: 16px;
-  border-radius: 5px; /* פינות מעוגלות */
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-button:hover {
-  background-color: #45a049; /* צבע רקע כהה יותר בלחיצה */
+.edit-btn {
+  color: #3498db; /* כחול לעריכה */
 }
 
-  
+.edit-btn:hover {
+  background: rgba(52, 152, 219, 0.1);
+}
+
+.delete-btn {
+  color: #ff5252; /* אדום למחיקה */
+}
+
+.delete-btn:hover {
+  background: rgba(255, 82, 82, 0.1);
+}
+
+.calculate-btn {
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--success-color);
+  color: white;
+  font-size: 1.25rem;
+  padding: 1.2rem;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-weight: 700;
+  transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+}
+
+.calculate-btn:hover {
+  background: var(--success-hover);
+  box-shadow: 0 15px 25px rgba(46, 125, 50, 0.3);
+}
+
+.results-container {
+  display: none;
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border-top: 5px solid var(--success-color);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.summary-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  flex: 1;
+  background: #f1f8e9;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid #c5e1a5;
+}
+
+.stat-box h4 {
+  color: var(--success-color);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.stat-box .amount {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.transactions-list {
+  list-style: none;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.transfer-icon {
+  margin: 0 1rem;
+  color: var(--primary-color);
+  /* התהפכות הראי הוסרה! */
+}
